@@ -1,4 +1,4 @@
-# Báo cáo Day 09 — <Họ và tên>, <MSHV>
+# Báo cáo Day 09 — Nguyen Quoc Khanh — 2A202603238
 
 > Xoá mọi `TODO(học viên)` và dòng gợi ý. Mỗi ý trả lời bằng **số lấy từ `submission/reports/`**, kèm mẫu số. Cả báo cáo ~1–2 trang.
 
@@ -17,8 +17,8 @@ TODO(học viên): vì sao `05_review_queue.csv` xếp ảnh đầu hàng như v
 ## 3. Calibration (2 ngưỡng)
 | Tham số | Khởi đầu | Đã chọn | Precision / Recall (trước → sau) | Lý do (đánh đổi) |
 |---|---|---|---|---|
-| `duplicates.phash_dist` | 2 | TODO(học viên) | | |
-| `second_opinion.conf` | 0.25 | TODO(học viên) | | |
+| `duplicates.phash_dist` | 2 | 8 | 1.00 / 0.50 → 1.00 / 0.67 | Đây là lỗi tự xóa ảnh nên ưu tiên Precision cao để tránh xóa nhầm ảnh sạch (Giữ nguyên Precision), tăng Recall lên 0.67 |
+| `second_opinion.conf` | 0.25 | 0.5 | 0.50 / 1.00 → 0.57 / 1.00 | Tăng conf từ 0.25 lên 0.50 (tức chỉ tin dự đoán của model có conf >= 0.50) giúp tăng precision từ 0.5 lên 0.57 (giảm số dự đoán rác), trong khi vẫn giữ nguyên recall 1.00 (vì conf gốc của các dự đoán đúng đa số >= 0.50) |
 
 TODO(học viên): **một chỗ calibration có thể đánh lừa bạn**, kèm bằng chứng từ dữ liệu của bạn (vd. mở xem vài cặp ảnh bị cho là trùng; số ảnh bị loại ở bước 1 có hợp lý không?).
 
@@ -32,5 +32,6 @@ TODO(học viên): chênh mAP50 (clean − raw) so với **độ lệch chuẩn 
 
 ## 6. Quyết định và ghi chú AI
 TODO(học viên): (a) quyết định cuối; nếu Hold/Rework cần làm gì để thành Release? (b) Dùng AI viết code? Ghi 3 dòng: prompt chính, cách bạn kiểm code AI, 1 lần AI sai. Không dùng: ghi "không dùng".
+
 
 *(Thưởng +2, tùy chọn)* CVAT: lọc `width < 20`, ảnh/số box khớp, đối chiếu `BOX_TINY` (xem docs/CVAT_FILTER.md), 1 câu về `can_review`.
